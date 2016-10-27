@@ -1,13 +1,16 @@
 # == Schema Information
 #
-# Table name: topics
+# Table name: memberships
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  user_id    :integer
+#  room_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Topic < ApplicationRecord
-  has_many :rooms
+class Membership < ApplicationRecord
+  has_many :posts
+  belongs_to :room
+  belongs_to :user
 end

@@ -1,0 +1,22 @@
+<h1>Hi, <%= @user.username %></h1>
+<% if session[:user_id] == @user.id %>
+  <h2>Your Room List:</h2>
+  <ul>
+    <% @user.rooms.each do |room| %>
+      <li><%= link_to room.name, room_path(room) %></li>
+      <% end %>
+  </ul>
+
+  <%= form_for @room do |f| %>
+    <%= f.label 'Topics:' %>
+    <%= f.select :topic_id, Topic.all.map {|element| [element.name, element.id]} %>
+    <br><br>
+    <%= f.label 'Room Name' %>
+    <%= f.text_field :name %>
+    <%= f.submit 'Create a Room' %>
+  <% end %>
+  <br><br>
+  <%= link_to 'Edit Your Account', edit_user_path %>
+  <br><br>
+  <%= button_to 'Logout', '/logout' %>
+<% end %>
