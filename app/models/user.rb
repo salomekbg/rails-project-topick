@@ -11,8 +11,8 @@
 
 class User < ApplicationRecord
   has_secure_password
-  validates :username, presence: true, uniqueness: true, length: {in: 3..20}
-  validates :password, presence: true, length: {in: 6..20}
+  validates :username, presence: true, uniqueness: true
+  validates :password, presence: true
   validates :password_confirmation, presence: true
 
   has_many :memberships

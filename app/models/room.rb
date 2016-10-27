@@ -9,8 +9,8 @@
 #
 
 class Room < ApplicationRecord
-  validates :name, uniqueness: true
-  
+  # validates :name, uniqueness: true
+
   belongs_to :topic
   has_many :memberships
   has_many :posts, through: :memberships

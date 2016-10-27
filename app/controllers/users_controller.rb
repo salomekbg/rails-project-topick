@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
 
   def new
+    redirect_to current_user unless !logged_in?
     @user = User.new
   end
 
