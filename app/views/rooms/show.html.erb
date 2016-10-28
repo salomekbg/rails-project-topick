@@ -1,2 +1,9 @@
 <h1>Room Name: <%= @room.name %></h1>
 <h4>Topic: <%= @room.topic.name %></h4>
+<h4>Posts:</h4>
+<ul>
+  <% @room.posts.each do |post| %>
+    <li><% post.content %></li>
+  <% end %>
+</ul>
+<br>
