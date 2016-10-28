@@ -1,0 +1,10 @@
+all the topics
+
+<ul>
+	<% @topics.each do |topic| %>
+	<li><h3><%= topic.name %></h3></li>
+		<% topic.rooms.each do |room| %>
+			<li><%= link_to room.name, room_path(room) %></li>
+		<% end %>
+	<% end %>
+</ul>

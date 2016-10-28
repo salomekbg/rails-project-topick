@@ -2,8 +2,16 @@
 <h4>Topic: <%= @room.topic.name %></h4>
 <h4>Posts:</h4>
 <ul>
-  <% @room.posts.each do |post| %>
-    <li><% post.content %></li>
+  <% @room.posts.last(20).each do |post| %>
+    <li> <%= "#{post.created_at} #{post.membership.user.username}: #{post.content}" %> <%=button_to 'Delete', post_path(post), method: 'delete', post_id: post.id %> </li> 
   <% end %>
 </ul>
 <br>
+<% if @user.rooms.include?(@room) %>
+		<%= form_for @post do |f| %>
+		<%= f.text_area :content %>
+		<%= f.submit "Post to" %>
+		<% end %>
+<% else %>
+		<%= button_to "Join This Room", @room, method: 'patch'  %>
+<% end %>

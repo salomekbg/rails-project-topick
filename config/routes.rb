@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
   resources :sessions, only: [:create]
   post '/logout', to: 'sessions#destroy'
-  resources :rooms, only: [:show, :new, :create]
+  resources :rooms, only: [:show, :new, :create, :update]
+  resources :posts, only: [:new, :create, :destroy]
+  resources :topics, only: [:index]
 end

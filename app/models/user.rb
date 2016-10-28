@@ -12,8 +12,9 @@
 class User < ApplicationRecord
   has_secure_password
   validates :username, presence: true, uniqueness: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
+  validates_presence_of :password, :on => :create
+
+
 
   has_many :memberships
   has_many :rooms, through: :memberships

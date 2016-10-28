@@ -1,5 +1,7 @@
 <% if session[:user_id] == @user.id %>
   <h1>Hi, <%= @user.username %></h1>
+  <h3><%= link_to "Browse Topics", topics_path %></h3>
+
   <%= form_for @room do |f| %>
     <%= f.label 'Topics:' %>
     <%= f.select :topic_id, Topic.all.map {|element| [element.name, element.id]} %>

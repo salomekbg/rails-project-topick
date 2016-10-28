@@ -3,16 +3,26 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @posts = @room.posts
+    @post = Post.new
+    session[:room_id] = @room.id
+    @user = current_user
   end
 
   def create
     @room = Room.new(room_params)
     user = User.find(session[:user_id])
     @room.users << user
-    @room.save(validate: false)
+    @room.save
     redirect_to room_path(@room)
   end
+
+  def update
+      @room = Room.find(params[:id])
+      @user = User.find(session[:user_id])
+      @room.users << @user
+      redirect_to @room
+  end    
+
 
   private
 
