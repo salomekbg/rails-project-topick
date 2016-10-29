@@ -15,6 +15,13 @@ class User < ApplicationRecord
   validates_presence_of :password, :on => :create
 
 
+  def room_count
+  	self.rooms.count
+  end
+
+
+
+
 
   has_many :memberships
   has_many :rooms, through: :memberships
