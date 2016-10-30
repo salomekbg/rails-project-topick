@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
+
+  def find_user_by_session_id
+    @user = User.find(session[:user_id])
+  end
+
+  def find_room
+    @room = Room.find(params[:id])
+  end
 end

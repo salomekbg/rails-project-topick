@@ -1,10 +1,12 @@
-all the topics
-
+<h1>All Topics & Rooms</h1>
+<br>
 <ul>
 	<% @topics.each do |topic| %>
-	<li><h3><%= topic.name %></h3></li>
-		<% topic.rooms.each do |room| %>
-			<li><%= link_to room.name, room_path(room) %></li>
+		<p><h3><%= topic.name %></h3></p>
+			<% topic.rooms.each do |room| %>
+				<li><%= link_to room.name, room_path(room) %></li>
+			<% end %>
 		<% end %>
-	<% end %>
+	<br><br>
+	<%= button_to 'Back to Profile', @user, method: 'get'%>
 </ul>

@@ -14,14 +14,24 @@
   <br>
   <h2>Your Room List:</h2>
   <ul>
-    <% @user.rooms.each do |room| %>
-      <li><%= link_to room.name, room_path(room) %></li>
+    <% if @user.rooms.empty? %>
+      You have not joined any rooms!
+    <% else %>
+      <% @user.rooms.each do |room| %>
+        <li><%= link_to room.name, room_path(room) %></li>
       <% end %>
+    <% end %>
   </ul>
   <br>
-  <%= link_to 'Edit Your Account', edit_user_path %>
+  <%= link_to 'Edit Your Account', edit_user_path(@user) %>
   <br><br>
   <%= button_to 'Logout', '/logout' %>
 <% else %>
   <h1><%= @user.username %>'s Profile</h1>
+  <h2>Their Room List:</h2>
+  <ul>
+    <% @user.rooms.each do |room| %>
+      <li><%= link_to room.name, room_path(room) %></li>
+    <% end %>
+  </ul>
 <% end %>

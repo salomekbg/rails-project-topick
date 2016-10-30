@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
-  before_action :check_for_cancel, only: [:update]
 
   def new
     redirect_to current_user unless !logged_in?
@@ -11,38 +10,28 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to @user
     else
       render :new
     end
   end
 
   def show
-    find_user
+    @user = User.find(params[:id])
     @room = Room.new
   end
 
   def edit
-    find_user
+    find_user_by_session_id
   end
 
   def update
-    find_user
+    find_user_by_session_id
     @user.update(user_params)
     redirect_to user_path(@user)
   end
 
   private
-
-  def check_for_cancel
-    if params[:commit] == "Cancel"
-      redirect_to user_path
-    end
-  end
-
-  def find_user
-    @user = User.find(params[:id])
-  end
 
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation)

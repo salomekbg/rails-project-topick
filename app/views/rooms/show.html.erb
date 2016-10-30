@@ -1,17 +1,28 @@
 <h1>Room Name: <%= @room.name %></h1>
 <h4>Topic: <%= @room.topic.name %></h4>
-<h4>Posts:</h4>
+<h4>Recent Posts:</h4>
 <ul>
   <% @room.posts.last(20).each do |post| %>
-    <li> <%= "#{post.created_at} #{post.membership.user.username}: #{post.content}" %> <%=button_to 'Delete', post_path(post), method: 'delete', post_id: post.id %> </li> 
+    <li> <%= "#{post.created_at} #{post.membership.user.username}: #{post.content}" %>
+      <br>
+      <% if @user.posts.include?(post) %>
+        <%= button_to 'Delete', post_path(post), method: 'delete', post_id: post.id %></li>
+      <% end %>
   <% end %>
 </ul>
 <br>
 <% if @user.rooms.include?(@room) %>
 		<%= form_for @post do |f| %>
 		<%= f.text_area :content %>
-		<%= f.submit "Post to" %>
+    <br>
+		<%= f.submit 'Post to Room' %>
 		<% end %>
+    <br>
+    <%= button_to 'Leave This Room', @room, method: 'patch', params: {name: 'leave'}  %>
+    <br>
+    <%= button_to 'Back to My Profile', @user, method: 'get' %>
 <% else %>
-		<%= button_to "Join This Room", @room, method: 'patch'  %>
+		<%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'}  %>
+    <br>
+    <%= button_to 'Back to My Profile', @user, method: 'get' %>
 <% end %>

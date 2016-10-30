@@ -13,5 +13,5 @@
   <%= f.password_field :password_confirmation %>
   <br><br>
   <%= f.submit 'Edit User' %>
-  <%= f.submit 'Cancel' %>
+  <%= button_to 'Cancel', @user, method: 'get' %>
 <% end %>

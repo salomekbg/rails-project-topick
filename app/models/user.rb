@@ -12,18 +12,13 @@
 class User < ApplicationRecord
   has_secure_password
   validates :username, presence: true, uniqueness: true
-  validates_presence_of :password, :on => :create
-
-
-  def room_count
-  	self.rooms.count
-  end
-
-
-
-
+  validates :password, length: {in: 8..16}, on: :create
 
   has_many :memberships
   has_many :rooms, through: :memberships
   has_many :posts, through: :memberships
+
+  def room_count
+  	self.rooms.count
+  end
 end

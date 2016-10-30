@@ -1,8 +1,6 @@
 class RoomsController < ApplicationController
-  before_action :check_for_back, only: [:show]
-
   def show
-    @room = Room.find(params[:id])
+    find_room
     @post = Post.new
     session[:room_id] = @room.id
     @user = current_user
@@ -10,27 +8,31 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-    user = User.find(session[:user_id])
-    @room.users << user
-    @room.save
-    redirect_to room_path(@room)
+    if @room.valid?
+      find_user_by_session_id
+      @room.users << @user
+      @room.save
+      redirect_to @room
+    else
+      find_user_by_session_id
+      render '/users/show'
+    end
   end
 
   def update
-      @room = Room.find(params[:id])
-      @user = User.find(session[:user_id])
+    find_room
+    if params[:name] == 'join'
+      find_user_by_session_id
       @room.users << @user
       redirect_to @room
-  end    
-
-
-  private
-
-  def check_for_back
-    if params[:commit] == "Go Back to My Profile"
-      redirect_to user_path
+    else
+      find_user_by_session_id
+      @room.users.delete(@user)
+      redirect_to @user
     end
   end
+
+  private
 
   def room_params
     params.require(:room).permit(:name, :topic_id)
