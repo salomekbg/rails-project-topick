@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
 		it 'does not allow a user to create an account without a password' do
 			expect(user_no_password.valid?).to eq(false)
 		end
-	end 
+	end
 
 	describe '#unique_username' do
 		let(:bob_two) {User.create(username: 'bob', password: 'pass') }
@@ -26,7 +26,4 @@ RSpec.describe User, type: :model do
 			expect(user.room_count).to eq(1)
 		end
 	end
- 
-
-
 end

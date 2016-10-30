@@ -9,10 +9,14 @@
 #
 
 class Room < ApplicationRecord
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: {scope: :topic}, on: :create
 
   belongs_to :topic
   has_many :memberships
   has_many :posts, through: :memberships
   has_many :users, through: :memberships
+
+  def users_count
+    self.users.count
+  end
 end
