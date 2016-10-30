@@ -3,8 +3,6 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
 <h3>Rooms by Topic</h3>
-
 <%= column_chart Room.group(:topic).count, {library: {hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}}} %>
-<% byebug %>
 <br>
 <%= button_to 'Back to My Profile', @user, method: 'get' %>

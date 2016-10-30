@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
 
   def update
     find_room
-    if params[:name] == 'join' && room.users.include?(@user) == false
+    if params[:name] == 'join'
       find_user_by_session_id
       @room.users << @user
       redirect_to @room

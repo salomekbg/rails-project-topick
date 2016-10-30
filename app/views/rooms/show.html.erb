@@ -1,6 +1,6 @@
 <h1>Room Name: <%= @room.name %></h1>
 <h4>Topic: <%= @room.topic.name %></h4>
-<h4>Current members: <%= @room.users_count %></h4>
+<h4 class="float-left">Current members: <%= @room.users_count %></h4>
 <ul>
   <% @room.users.uniq.map do |user| %>
     <li><%= link_to "#{user.username}", user %></li>
