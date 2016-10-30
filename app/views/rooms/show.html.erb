@@ -2,7 +2,7 @@
 <h4>Topic: <%= @room.topic.name %></h4>
 <h4>Current members: <%= @room.users_count %></h4>
 <ul>
-  <% @room.users.map do |user| %>
+  <% @room.users.uniq.map do |user| %>
     <li><%= link_to "#{user.username}", user %></li>
   <% end %>
 </ul>

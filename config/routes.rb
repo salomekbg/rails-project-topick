@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :rooms, only: [:show, :new, :create, :update]
   resources :posts, only: [:new, :create, :destroy]
   resources :topics, only: [:index]
+  get '/statistics', to: 'statistics#index'
 end

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: rooms
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  topic_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -28,6 +39,14 @@ RSpec.describe User, type: :model do
 
 	describe '#has_users_count' do
 		it 'has a method to return the number of users a room has' do
+		room.users << user
+			expect(room.users_count).to eq(1)
+		end
+	end
+
+	describe '#no_same_users' do
+		it 'will not allow the same user to be added more than once to a room' do
+		room.users << user
 		room.users << user
 			expect(room.users_count).to eq(1)
 		end

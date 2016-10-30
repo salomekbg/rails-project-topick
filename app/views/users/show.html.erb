@@ -25,6 +25,8 @@
   <br>
   <%= link_to 'Edit Your Account', edit_user_path(@user) %>
   <br><br>
+  <%= link_to 'See Site Statistics', '/statistics' %>
+  <br><br>
   <%= button_to 'Logout', '/logout' %>
 <% else %>
   <h1><%= @user.username %>'s Profile</h1>
