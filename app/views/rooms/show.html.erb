@@ -2,17 +2,18 @@
 <h4>Topic: <%= @room.topic.name %></h4>
 <h4 class="float-left">Current members: <%= @room.users_count %></h4>
 <ul>
-  <% @room.users.uniq.map do |user| %>
+  <% @room.current_members.each do |user| %>
     <li><%= link_to "#{user.username}", user %></li>
   <% end %>
 </ul>
+<h4>Total Number of posts: <%= @room.total_posts%> </h4>
 <h4>Recent Posts:</h4>
 <% if @room.posts.empty? %>
   There are no recent posts. Be the first to post!
 <% else %>
   <ul>
     <% @room.posts.last(20).each do |post| %>
-      <li class="post"><i><span class="time"><%= "#{post.created_at.strftime('%d %b. %Y')} @ #{post.created_at.strftime('%H:%M')}" %></span></i><span class="name"><%= " #{post.membership.user.username} says:" %></span>
+      <li class="post"><i><span class="time"><%= "#{post.created_at.strftime('%d %b. %Y')} @ #{post.created_at.strftime('%I:%M %p')}" %></span></i><span class="name"><%= " #{post.membership.user.username} says:" %></span>
       <%= "#{post.content}" %>
       <br>
       <% if @user.posts.include?(post) %>
@@ -23,19 +24,23 @@
   </ul>
 <% end %>
 <br>
-<% if @user.rooms.include?(@room) %>
-	<%= form_for @post do |f| %>
-	<%= f.text_area :content %>
-  <br>
-	<%= f.submit 'Post to Room' %>
-	<% end %>
-  <br>
-  <%= button_to 'Leave This Room', @room, method: 'patch', params: {name: 'leave'}%>
-  <br>
-  <%= button_to 'Back to My Profile', @user, method: 'get'%>
+<% if @room.errors.any? %>
+<ul>
+  <h4><%= @room.errors.full_messages[0] %></h4>
+</ul>
 <% else %>
-  <br>
-	<%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'}  %>
-  <br>
-  <%= button_to 'Back to My Profile', @user, method: 'get' %>
+  <% if @user.rooms.include?(@room) && @post %>
+  	<%= form_for @post do |f| %>
+  	<%= f.text_area :content %>
+    <br>
+  	<%= f.submit 'Post to Room' %>
+  	<% end %>
+    <br>
+    <%= button_to 'Leave This Room', @room, method: 'patch', params: {name: 'leave'}%>
+  <% else %>
+    <br>
+  	<%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'}  %>
+    <% end %>
 <% end %>
+<br>
+<%= button_to 'Back to My Profile', @user, method: 'get' %>
