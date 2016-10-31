@@ -1,10 +1,7 @@
 <h1>Site Statistics</h1>
 <br>
-<% new_hash = {} %>
-<% Topic.all.each do |topic| %>
-  <% new_hash["#{topic.name}"] = topic.rooms.length %>
-<% end %>
-<%= column_chart new_hash, library: {title: 'Rooms by Topic', hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}, backgroundColor: '#FFFEDD', colors: ['red']} %>
+<%= column_chart @topic_names, library: {title: 'Rooms by Topic', hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}, backgroundColor: '#FFFEDD', colors: ['red']} %>
 <br>
+<%= bar_chart @room_users, library: {title: 'Number of Users in Rooms', hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}, backgroundColor: '#FFFEDD', colors: ['red']} %>
 <br>
 <%= button_to 'Back to My Profile', @user, method: 'get' %>
