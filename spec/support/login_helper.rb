@@ -26,4 +26,12 @@
     fill_in("user[password]", :with => "password")
     click_button('Login')
   end
+
+  def create_room
+    @newroom = Room.create(
+      id: 1,
+      name: "Biology",
+      topic_id: 2
+      )
+  end
 end

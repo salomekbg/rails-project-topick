@@ -4,7 +4,7 @@
 
   <%= form_for @room do |f| %>
     <%= f.label 'Topics:' %>
-    <%= f.select :topic_id, Topic.all.map {|element| [element.name, element.id]} %>
+    <%= f.select :topic_id, Topic.all.map {|element| [element.name, element.id, name: element.name]} %>
     <br><br>
     <%= f.label 'Room Name:' %>
     <%= f.text_field :name %>
