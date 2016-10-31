@@ -15,11 +15,12 @@ h1 {
 .post {
   list-style: none;
   padding: 10px;
-  outline-style: dashed;
+  outline-style: solid;
   outline-width: 1px;
   background-color: white;
   width: 75%;
   word-wrap: break-word;
+  box-shadow: 10px 10px 10px #888888;
 }
 
 .right {
