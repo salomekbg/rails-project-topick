@@ -10,5 +10,7 @@
 #
 
 class Post < ApplicationRecord
+  validates :content, presence: true, on: :create
+
   belongs_to :membership
 end

@@ -1,14 +1,14 @@
 <h1>Edit Your Profile</h1>
 <%= form_for @user do |f| %>
-  <%= f.label 'Username' %>
+  <%= f.label 'Username:' %>
   <br>
   <%= f.text_field :username %>
   <br><br>
-  <%= f.label 'Password' %>
+  <%= f.label 'Password:' %>
   <br>
   <%= f.password_field :password %>
   <br><br>
-  <%= f.label 'Confirm Password' %>
+  <%= f.label 'Confirm Password:' %>
   <br>
   <%= f.password_field :password_confirmation %>
   <br><br>

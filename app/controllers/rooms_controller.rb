@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
+  before_action :find_room, only: [:show, :update]
+
   def show
-    find_room
     @post = Post.new
     session[:room_id] = @room.id
     @user = current_user
@@ -20,7 +21,6 @@ class RoomsController < ApplicationController
   end
 
   def update
-    find_room
     if params[:name] == 'join'
       find_user_by_session_id
       @room.users << @user
@@ -33,6 +33,10 @@ class RoomsController < ApplicationController
   end
 
   private
+
+  def find_room
+    @room = Room.find(params[:id])
+  end
 
   def room_params
     params.require(:room).permit(:name, :topic_id)

@@ -1,8 +1,10 @@
 <h1>Site Statistics</h1>
 <br>
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-
-<h3>Rooms by Topic</h3>
-<%= column_chart Room.group(:topic).count, {library: {hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}}} %>
+<% new_hash = {} %>
+<% Topic.all.each do |topic| %>
+  <% new_hash["#{topic.name}"] = topic.rooms.length %>
+<% end %>
+<%= column_chart new_hash, library: {title: 'Rooms by Topic', hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}, backgroundColor: '#FFFEDD', colors: ['red']} %>
+<br>
 <br>
 <%= button_to 'Back to My Profile', @user, method: 'get' %>

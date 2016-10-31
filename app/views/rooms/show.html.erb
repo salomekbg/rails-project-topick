@@ -7,28 +7,35 @@
   <% end %>
 </ul>
 <h4>Recent Posts:</h4>
-<ul>
-  <% @room.posts.last(20).each do |post| %>
-    <li> <%= "#{post.created_at} #{post.membership.user.username}: #{post.content}" %>
+<% if @room.posts.empty? %>
+  There are no recent posts. Be the first to post!
+<% else %>
+  <ul>
+    <% @room.posts.last(20).each do |post| %>
+      <li class="post"><i><span class="time"><%= "#{post.created_at.strftime('%d %b. %Y')} @ #{post.created_at.strftime('%H:%M')}" %></span></i><span class="name"><%= " #{post.membership.user.username} says:" %></span>
+      <%= "#{post.content}" %>
       <br>
       <% if @user.posts.include?(post) %>
-        <%= button_to 'Delete', post_path(post), method: 'delete', post_id: post.id %></li>
+        <%= button_to 'Delete', post_path(post), method: 'delete', post_id: post.id, class: 'right' %></li>
       <% end %>
-  <% end %>
-</ul>
+      <br>
+    <% end %>
+  </ul>
+<% end %>
 <br>
 <% if @user.rooms.include?(@room) %>
-		<%= form_for @post do |f| %>
-		<%= f.text_area :content %>
-    <br>
-		<%= f.submit 'Post to Room' %>
-		<% end %>
-    <br>
-    <%= button_to 'Leave This Room', @room, method: 'patch', params: {name: 'leave'}  %>
-    <br>
-    <%= button_to 'Back to My Profile', @user, method: 'get' %>
+	<%= form_for @post do |f| %>
+	<%= f.text_area :content %>
+  <br>
+	<%= f.submit 'Post to Room' %>
+	<% end %>
+  <br>
+  <%= button_to 'Leave This Room', @room, method: 'patch', params: {name: 'leave'}%>
+  <br>
+  <%= button_to 'Back to My Profile', @user, method: 'get'%>
 <% else %>
-		<%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'}  %>
-    <br>
-    <%= button_to 'Back to My Profile', @user, method: 'get' %>
+  <br>
+	<%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'}  %>
+  <br>
+  <%= button_to 'Back to My Profile', @user, method: 'get' %>
 <% end %>

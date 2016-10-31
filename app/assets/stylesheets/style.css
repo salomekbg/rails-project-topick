@@ -1,3 +1,41 @@
 body {
   padding-left: 20px;
+  background-color: #FFFEDD;
+  font-family: 'Coming Soon', cursive;
+}
+
+.inline {
+  display: inline;
+}
+
+h1 {
+  color: red;
+}
+
+.post {
+  list-style: none;
+  padding: 10px;
+  outline-style: dashed;
+  outline-width: 1px;
+  background-color: white;
+  width: 75%;
+  word-wrap: break-word;
+}
+
+.right {
+  float: right;
+  margin-top: -20px;
+}
+
+textarea {
+  width: 300px;
+  height: 100px;
+}
+
+.name {
+  color: blue;
+}
+
+.time {
+  color: #730CE8;
 }
