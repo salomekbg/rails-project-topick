@@ -1,4 +1,4 @@
-
+<h1>Create New Account</h1>
 <% if @user.errors.any? %>
 <ul>
   <% @user.errors.full_messages.each do |msg| %>
@@ -6,10 +6,6 @@
   <% end %>
 </ul>
 <% end %>
-
-
-
-<h1>Create New Account</h1>
 <%= form_for @user do |f| %>
   <%= f.label 'Username:' %>
   <br>
