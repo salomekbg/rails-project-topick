@@ -10,7 +10,7 @@
 #
 
 class Room < ApplicationRecord
-  # validates :name, presence: true, uniqueness: {scope: :topic}, on: :create
+  validates :name, presence: true, uniqueness: {scope: :topic}, on: :create
 
   belongs_to :topic
   has_many :memberships

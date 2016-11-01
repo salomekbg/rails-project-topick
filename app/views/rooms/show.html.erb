@@ -35,7 +35,7 @@
   <%= button_to 'Back to My Profile', @user, method: 'get'%>
 <% else %>
   <br>
-	<%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'}  %>
+	<%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'} %>
   <br>
   <%= button_to 'Back to My Profile', @user, method: 'get' %>
 <% end %>
