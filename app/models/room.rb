@@ -27,7 +27,6 @@ class Room < ApplicationRecord
   end
 
   def users_count
-    byebug
     self.users.uniq.count
   end
 
