@@ -21,21 +21,21 @@ Topic.create(name: "News")
 Topic.create(name: "Sports")
 Topic.create(name: "Politics")
 
-10.times do
-  User.create(username: Faker::Pokemon.name.downcase, password: "password", password_confirmation: "password")
-end
+# 10.times do
+#   User.create(username: Faker::Pokemon.name.downcase, password: "password", password_confirmation: "password")
+# end
 
-10.times do
-  room = Room.create(name: Faker::Superhero.name, topic_id: rand(1..Topic.all.length))
-  rand(1..5).times do
-    room.users << User.find(rand(1..User.all.length))
-  end
-  room = Room.create(name: Faker::StarWars.character, topic_id: rand(1..Topic.all.length))
-  rand(1..5).times do
-    room.users << User.find(rand(1..User.all.length))
-  end
-  room = Room.create(name: Faker::Team.creature, topic_id: rand(1..Topic.all.length))
-  rand(1..5).times do
-    room.users << User.find(rand(1..User.all.length))
-  end
+# 10.times do
+#   room = Room.create(name: Faker::Superhero.name, topic_id: rand(1..Topic.all.length))
+#   rand(1..5).times do
+#     room.users << User.find(rand(1..User.all.length))
+#   end
+#   room = Room.create(name: Faker::StarWars.character, topic_id: rand(1..Topic.all.length))
+#   rand(1..5).times do
+#     room.users << User.find(rand(1..User.all.length))
+#   end
+#   room = Room.create(name: Faker::Team.creature, topic_id: rand(1..Topic.all.length))
+#   rand(1..5).times do
+#     room.users << User.find(rand(1..User.all.length))
+#   end
 end
