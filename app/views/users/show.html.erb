@@ -1,3 +1,10 @@
+<% if @room.errors.any? %>
+<ul>
+  <% @room.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
 <% if session[:user_id] == @user.id %>
   <h1>Hi, <%= @user.username %></h1>  
   <h4><%= link_to "Browse Topics", topics_path %></h4>
