@@ -1,6 +1,6 @@
 <% if session[:user_id] == @user.id %>
   <h1>Hi, <%= @user.username %></h1>
-  <h4><%= link_to "Browse Topics", topics_path %></h4>
+  <h4><%= link_to "Browse Rooms", topics_path %></h4>
 
   <% if @room.errors.any? %>
   <ul>

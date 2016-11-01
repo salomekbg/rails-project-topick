@@ -9,8 +9,8 @@ class PostsController < ApplicationController
 		post = Post.new(content: params[:post][:content], membership_id: membership.id)
 		post_limit = PostLimit.new(find_user_by_session_id)
 		if post_limit.post_max?
-			@room.errors[:base] << "You can only post 5 times per day"
-			render :'rooms/show'
+			@room.errors[:base] << "You can only post 10 times per day"
+			redirect_to @room
 		else
 			post.save
 			redirect_to @room
