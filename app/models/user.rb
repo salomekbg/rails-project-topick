@@ -21,4 +21,16 @@ class User < ApplicationRecord
   def room_count
   	self.rooms.count
   end
+
+  def most_narcissistic_user
+  end
+
+  def most_active_user
+  end
+
+  def favorite_room
+  end
+
+  
+
 end
