@@ -31,7 +31,6 @@ class RoomsController < ApplicationController
       @room.users << @user
       room_rec = RoomRecs.new(@room)
       @room_rec = room_rec.recommend
-      byebug
       redirect_to @room
     else
       find_user_by_session_id

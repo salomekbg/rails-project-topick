@@ -46,4 +46,9 @@ class Room < ApplicationRecord
   def total_posts
     self.posts.count
   end
+
+  def most_active_user
+    most_active = self.current_members.sort! { |a,b| a.average_posts_per_day <=> b.average_posts_per_day }.first
+    most_active = [most_active.username, most_active.average_posts_per_day]
+  end
 end
