@@ -1,7 +1,4 @@
 <h1>Site Statistics</h1>
-<br>
-<%= column_chart @topic_names, library: {title: 'Rooms by Topic', hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}, backgroundColor: '#FFFEDD', colors: ['red']} %>
-<br>
-<%= bar_chart @room_users, library: {title: 'Number of Users in Rooms', hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}, backgroundColor: '#FFFEDD', colors: ['red']} %>
-<br>
+<%= column_chart @topic_names, library: {title: 'Rooms by Topic', hAxis: {title: "Topics"}, vAxis: {title: "Number of Rooms"}, backgroundColor: '#FFFEDD', colors: ['red']}, height: "300px" %>
+<%= bar_chart @room_users, library: {title: 'Users per Room', hAxis: {title: "Number of Users"}, vAxis: {title: "Rooms"}, backgroundColor: '#FFFEDD', colors: ['red']}, height: "700px" %>
 <%= button_to 'Back to My Profile', @user, method: 'get' %>

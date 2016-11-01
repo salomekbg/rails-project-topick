@@ -1,16 +1,12 @@
 <h1>All Topics & Rooms</h1>
+<% @topics.each do |topic| %>
+	<p><h3><%= topic.name %></h3></p>
+	<ul>
+		<% topic.rooms.each do |room| %>
+			<li	><%= link_to room.name, room_path(room) %></li>
+			<% end %>
+	</ul>
+<% end %>
 <br>
-<div>
-
-	<% @topics.each do |topic| %>
-		<p><h3><%= topic.name %></h3></p>
-		<ul>
-			<% topic.rooms.each do |room| %>
-				<li	><%= link_to room.name, room_path(room) %></li>
-				<% end %>
-		</ul>
-	<% end %>
-	<br><br>
-	<%= button_to 'Back to Profile', @user, method: 'get'%>
-	<br><br>
-</div>
+<%= button_to 'Back to Profile', @user, method: 'get'%>
+<br><br>

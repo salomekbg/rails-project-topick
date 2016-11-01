@@ -4,10 +4,6 @@ body {
   font-family: 'Coming Soon', cursive;
 }
 
-.inline {
-  display: inline;
-}
-
 h1 {
   color: red;
 }
@@ -20,7 +16,7 @@ h1 {
   background-color: white;
   width: 75%;
   word-wrap: break-word;
-  box-shadow: 10px 10px 10px #888888;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .right {
@@ -39,4 +35,16 @@ textarea {
 
 .time {
   color: #730CE8;
+}
+
+a {
+  text-decoration: none
+}
+
+a:link, a:visited {
+  color: blue;
+}
+
+a:hover {
+  color: red;
 }
