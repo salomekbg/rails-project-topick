@@ -5,8 +5,8 @@ class RoomsController < ApplicationController
     @post = Post.new
     session[:room_id] = @room.id
     @user = current_user
-    room_rec = RoomRecs.new(@room)
-    @room_rec = room_rec.recommend
+    # room_rec = RoomRecs.new(@room)
+    # @room_rec = room_rec.recommend
 
   end
 
@@ -29,8 +29,8 @@ class RoomsController < ApplicationController
     if params[:name] == 'join'
       find_user_by_session_id
       @room.users << @user
-      room_rec = RoomRecs.new(@room)
-      @room_rec = room_rec.recommend
+      # room_rec = RoomRecs.new(@room)
+      # @room_rec = room_rec.recommend
       redirect_to @room
     else
       find_user_by_session_id
