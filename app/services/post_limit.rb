@@ -1,5 +1,6 @@
 class PostLimit
   attr_reader :user_id
+  
   def initialize(user)
     @user = user
   end
@@ -15,7 +16,7 @@ class PostLimit
   end
 
   def post_max?
-    true unless self.post_counter < 25
+    true unless self.post_counter < 10
   end
 
 

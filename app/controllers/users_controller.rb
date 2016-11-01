@@ -8,7 +8,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    if User.find_by(username: "deleted_user")
+      User.create(username: "deleted_user", password: "password")
     @user = User.new(user_params)
+    end
     if @user.save
       session[:user_id] = @user.id
       redirect_to @user

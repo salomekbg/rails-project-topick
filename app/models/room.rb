@@ -27,7 +27,7 @@ class Room < ApplicationRecord
   end
 
   def users_count
-    self.users.uniq.count
+    self.users.uniq.count - 1
   end
 
   def posts_count
@@ -39,7 +39,8 @@ class Room < ApplicationRecord
   end
 
   def current_members
-    self.users.uniq
+    deleted_user = User.find_by(username: "deleted_user")
+    self.users.uniq - [deleted_user]
   end
 
   def total_posts

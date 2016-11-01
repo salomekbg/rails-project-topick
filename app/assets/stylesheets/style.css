@@ -1,7 +1,6 @@
 body {
   padding-left: 20px;
   background-color: #FFFEDD;
-  font-family: 'Coming Soon', cursive;
 }
 
 h1 {
@@ -17,6 +16,7 @@ h1 {
   width: 75%;
   word-wrap: break-word;
   box-shadow: 5px 5px 5px #888888;
+  font-family: 'Coming Soon', cursive;
 }
 
 .right {

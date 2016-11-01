@@ -18,11 +18,23 @@ class User < ApplicationRecord
   has_many :rooms, through: :memberships
   has_many :posts, through: :memberships
 
+
+  def average_post_per_day  
+    days_active = ((Time.now - self.created_at)/3600)/24
+    (days_active / self.post_count).round(1)
+  end
+
+
   def room_count
   	self.rooms.count
   end
 
+  def post_count
+    self.posts.count
+  end
+
   def most_narcissistic_user
+    puts "foo"
   end
 
   def most_active_user
