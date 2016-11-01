@@ -5,9 +5,6 @@ class StatisticsController < ApplicationController
     columns = <<-SQL
       SELECT topics.*
       FROM topics
-      -- JOIN rooms
-      -- ON topics.id = rooms.topic_id
-      -- GROUP BY topics.id
     SQL
 
     topic_array = Topic.find_by_sql(columns)
