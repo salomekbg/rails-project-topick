@@ -16,6 +16,6 @@ class StatisticsController < ApplicationController
     SQL
 
     room_array = Room.find_by_sql(bar)
-    @room_users = room_array.map {|room_object| [room_object[:name], room_object.users.length]}
+    @room_users = room_array.map {|room_object| [room_object[:name], room_object.users.length-1]}
   end
 end

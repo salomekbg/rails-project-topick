@@ -32,16 +32,28 @@
 <% else %>
   <% if @user.rooms.include?(@room) && @post %>
   	<%= form_for @post do |f| %>
-  	<%= f.text_area :content, placeholder: "Write a Post" %>
-    <br>
-  	<%= f.submit 'Post to Room' %>
+  	  <%= f.text_area :content, placeholder: "Write a Post" %>
+      <br>
+  	  <%= f.submit 'Post to Room' %>
   	<% end %>
     <br>
-    <%= button_to 'Leave This Room', @room, method: 'patch', params: {name: 'leave'}%>
+    <table>
+      <tr>
+        <td>
+          <%= button_to 'Leave This Room', @room, method: 'patch', params: {name: 'leave'}%>
+        </td>
   <% else %>
     <br>
-  	<%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'}  %>
+    <table>
+      <tr>
+        <td>
+  	      <%= button_to 'Join This Room', @room, method: 'patch', params: {name: 'join'}  %>
+        </td>
     <% end %>
 <% end %>
 <br>
-<%= button_to 'Back to My Profile', @user, method: 'get' %>
+  <td>
+    <%= button_to 'Back to My Profile', @user, method: 'get' %>
+  </td>
+</tr>
+<table>

@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
 body {
   padding-left: 20px;
-  background-color: #8ee1f7;
+  background-color: white;
+  font-family: 'Comfortaa', cursive;
 }
 
 h1 {
-  color: purple;
+  color: #70050C;
 }
 
 h2 {
@@ -20,7 +23,7 @@ h3 {
   padding: 10px;
   outline-style: solid;
   outline-width: 1px;
-  background-color: white;
+  background-color: lightyellow;
   width: 75%;
   word-wrap: break-word;
   box-shadow: 5px 5px 5px #888888;
@@ -47,15 +50,15 @@ textarea {
 }
 
 a {
-  text-decoration: none
+  text-decoration: none;
 }
 
 a:link, a:visited {
-  color: blue;
+  color: #2EBD51;
 }
 
 a:hover {
-  color: #968df3;
+  color: #58FF81;
 }
 
 .field_with_errors {

@@ -38,4 +38,4 @@ Topic.create(name: "Politics")
 #   rand(1..5).times do
 #     room.users << User.find(rand(1..User.all.length))
 #   end
-end
+# end
