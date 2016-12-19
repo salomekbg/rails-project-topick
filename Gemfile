@@ -32,12 +32,12 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 gem 'annotate'
 gem 'chartkick'
+gem 'faker'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
   gem 'rspec-rails', '~>3.5'
-  gem 'faker'
   gem 'factory_girl_rails'
   gem "capybara"
   gem "rack_session_access"
