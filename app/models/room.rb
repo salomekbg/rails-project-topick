@@ -52,7 +52,8 @@ class Room < ApplicationRecord
   end
 
   def most_active_user
-    most_active = self.current_members.sort! { |a,b| a.average_posts_per_day <=> b.average_posts_per_day }.first
-    most_active = [most_active.username, most_active.average_posts_per_day]
+    results = {}
+    self.current_members.map {|member| results[member.username] = member.memberships.find_by(room_id: self.id).posts.count}
+    results.sort_by{|k, v| v}.reverse[0][0]
   end
 end
