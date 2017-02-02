@@ -7,7 +7,8 @@
     <li><%= link_to "#{user.username}", user %></li>
   <% end %>
 </ul>
-<h4>Total Number of posts: <%= @room.total_posts%> </h4>
+<h4>Total Number of posts: <%= @room.total_posts %> </h4>
+<h4>Most active member: <%= @room.most_active_user %></h4>
 <h4>Recent Posts:</h4>
 <% if @room.posts.empty? %>
   There are no recent posts. Be the first to post!
