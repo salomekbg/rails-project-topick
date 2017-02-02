@@ -24,8 +24,7 @@ class Room < ApplicationRecord
   def self.narcissism
     results = {}
     Room.all.map do |room|
-      count = room.posts.map{|post| post.content}.join(" ").upcase.split(" ").count("I")
-      results[room.name] = count
+      results[room.name] = room.posts.map{|post| post.content}.join(" ").upcase.split(" ").count("I")
     end
     results
   end
