@@ -18,7 +18,7 @@ class Room < ApplicationRecord
   has_many :users, through: :memberships
 
   def self.most_narcissistic
-    narcissism.sort_by{|k,v| v}.reverse[0][0]
+    self.narcissism.sort_by{|k,v| v}.reverse[0][0]
   end
 
   def self.narcissism
