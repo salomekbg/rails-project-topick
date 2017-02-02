@@ -17,13 +17,17 @@ class Room < ApplicationRecord
   has_many :posts, through: :memberships
   has_many :users, through: :memberships
 
-  def most_narcissistic
-    Room.all.map {|room| room.narcissism}.sort.last
+  def self.most_narcissistic
+    self.narcissism.sort_by{|k,v| v}.reverse[0][0]
   end
 
-  def narcissism
-    allposts = self.posts.map{|post| post.content }.join(" ").upcase
-    allposts.split(" ").count("I")
+  def self.narcissism
+    results = {}
+    Room.all.map do |room|
+      count = room.posts.map{|post| post.content}.join(" ").upcase.split(" ").count("I")
+      results[room.name] = count
+    end
+    results
   end
 
   def users_count
