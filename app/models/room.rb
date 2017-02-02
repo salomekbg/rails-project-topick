@@ -52,6 +52,7 @@ class Room < ApplicationRecord
   end
 
   def most_active_user
+    return "no activity!" if self.posts.length == 0
     results = {}
     self.current_members.map {|member| results[member.username] = member.memberships.find_by(room_id: self.id).posts.count}
     results.sort_by{|k, v| v}.reverse[0][0]
