@@ -3,11 +3,13 @@
 body {
   padding-left: 20px;
   background-color: white;
+  background-image: url('/assets/City_Landscape_Background.jpg');
+  background-size: cover;
   font-family: 'Comfortaa', cursive;
 }
 
 h1 {
-  color: #70050C;
+  color: #07395E;
 }
 
 h2 {
@@ -49,16 +51,20 @@ textarea {
   color: #730CE8;
 }
 
+.main {
+  padding-left: 80px;
+}
+
 a {
   text-decoration: none;
 }
 
 a:link, a:visited {
-  color: #2EBD51;
+  color: #B5DDFF;
 }
 
 a:hover {
-  color: #58FF81;
+  color: white;
 }
 
 .field_with_errors {

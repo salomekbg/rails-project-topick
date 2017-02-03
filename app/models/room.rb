@@ -17,17 +17,7 @@ class Room < ApplicationRecord
   has_many :posts, through: :memberships
   has_many :users, through: :memberships
 
-  def self.most_narcissistic
-    self.narcissism.sort_by{|k,v| v}.reverse[0][0]
-  end
 
-  def self.narcissism
-    results = {}
-    self.all.map do |room|
-      results[room.name] = room.posts.map{|post| post.content}.join(" ").upcase.split(" ").count("I")
-    end
-    results
-  end
 
   def users_count
     self.users.uniq.count - 1
@@ -48,6 +38,18 @@ class Room < ApplicationRecord
 
   def total_posts
     self.posts.count
+  end
+
+  def self.most_narcissistic
+    self.narcissism.sort_by{|k,v| v}.reverse[0][0]
+  end
+
+  def self.narcissism
+    results = {}
+    self.all.map do |room|
+      results[room.name] = room.posts.map{|post| post.content}.join(" ").upcase.split(" ").count("I")
+    end
+    results
   end
 
   def most_active_user
